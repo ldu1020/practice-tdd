@@ -4,24 +4,32 @@ class TodoPresenter {
     this.list = [...initialList];
   }
 
-  addItem(item: Item, updateFn?: (item: Item) => void) {
-    this.list.push(item);
-    if (updateFn) updateFn(item);
+  addItem(item: Item, updateFn?: UpdateFn) {
+    this.list = [...this.list, item];
+    if (updateFn) updateFn(this.list);
   }
 
-  deleteItem(id: number, updateFn?: (id: number) => void) {
+  deleteItem(id: number, updateFn?: UpdateFn) {
     const updated = this.list.filter((li) => li.id !== id);
     this.list = updated;
-    if (updateFn) updateFn(id);
+    if (updateFn) updateFn(this.list);
   }
 
-  checkItem(id: number, updateFn?: (id: number) => void) {
+  checkItem(id: number, updateFn?: UpdateFn) {
     const updated = this.list.map((li) => {
       if (li.id === id) li.checked = !li.checked;
       return li;
     });
     this.list = updated;
-    if (updateFn) updateFn(id);
+    if (updateFn) updateFn(this.list);
+  }
+
+  getList() {
+    return this.list;
+  }
+
+  get isEmpty() {
+    return this.list.length === 0;
   }
 }
 
@@ -32,3 +40,5 @@ export type Item = {
   title: string;
   checked: boolean;
 };
+
+export type UpdateFn = (items: Item[]) => void;

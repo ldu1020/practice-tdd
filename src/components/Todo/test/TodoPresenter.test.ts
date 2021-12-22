@@ -26,21 +26,20 @@ describe("TodoPresenter", () => {
     const item4 = { id: 4, title: "four", checked: false };
     todoPresenter.addItem(item4, updateFn);
     expect(todoPresenter.list).toEqual([...initialList, item4]);
-
-    expect(updateFn).toBeCalledWith(item4);
+    expect(updateFn).toBeCalledWith(todoPresenter.getList());
   });
 
   it("delete item and call update fn", () => {
     todoPresenter.deleteItem(3, updateFn);
     expect(todoPresenter.list).toEqual([item1, item2]);
-    expect(updateFn).toBeCalledWith(3);
+    expect(updateFn).toBeCalledWith(todoPresenter.getList());
   });
 
   it("check item and call update fn", () => {
     todoPresenter.checkItem(3, updateFn);
     expect(todoPresenter.list[2].checked).toBe(true);
     expect(todoPresenter.list[0].checked).toBe(false);
-    expect(updateFn).toBeCalledWith(3);
+    expect(updateFn).toBeCalledWith(todoPresenter.getList());
   });
 });
 

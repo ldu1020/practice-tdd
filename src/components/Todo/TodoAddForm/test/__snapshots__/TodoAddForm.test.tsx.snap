@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoAddForm renders (snapshot) 1`] = `
+<form>
+  <input
+    className="chakra-input css-0"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    placeholder="item"
+  />
+  <button
+    className="chakra-button css-5c2176"
+    onClick={[Function]}
+    type="button"
+  >
+    Add
+  </button>
+</form>
+`;
