@@ -50,15 +50,5 @@
     "@babel/preset-typescript": "^7.16.5",
     "@testing-library/dom": "^8.11.1",
     "@testing-library/user-event": "^13.5.0"
-  },
-  "jest": {
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx|ts|tsx)$",
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "jsx",
-      "ts",
-      "tsx"
-    ]
   }
 }

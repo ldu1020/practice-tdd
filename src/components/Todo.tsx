@@ -1,8 +1,8 @@
 import React from "react";
-import { Flex, List, ListIcon, ListItem } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
 import TodoPresenter, { Item } from "./Todo/Todo.presenter";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import TodoAddForm from "./Todo/TodoAddForm/TodoAddForm";
+import TodoList from "./Todo/TodoList/TodoList";
 
 interface TodoProps {
   todoPresenter: TodoPresenter;
@@ -23,36 +23,14 @@ const Todo = ({ todoPresenter }: TodoProps) => {
   };
 
   return (
-    <List w="300px" border="1px">
+    <Box w="300px" border="1px">
       <TodoAddForm onAdd={handleAddTodo} />
-      {list.map((item) => {
-        return (
-          <ListItem
-            key={item.id}
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            borderBottom="1px"
-            p="10px"
-            cursor="pointer"
-            onClick={() => {
-              handleCheckTodo(item.id);
-            }}
-          >
-            {item.title}
-            <Flex>
-              <ListIcon as={CheckIcon} color={item.checked ? "red" : "gray"} />
-              <ListIcon
-                as={CloseIcon}
-                onClick={() => {
-                  handleDeleteTodo(item.id);
-                }}
-              />
-            </Flex>
-          </ListItem>
-        );
-      })}
-    </List>
+      <TodoList
+        list={list}
+        onCheck={handleCheckTodo}
+        onDelete={handleDeleteTodo}
+      />
+    </Box>
   );
 };
 
